@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fisherman Website - Price List & Order Online - {{title}}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to custom CSS -->
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Fisherman</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pricelist">Price List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#order-online">Order Online</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Hero Section -->
+    <div class="container-fluid pb-3 pt-3">
+        <section id="hero" class="bg-image"
+            style="background-image: url('https://img.freepik.com/free-photo/raw-fish-arrangement-cooking_23-2148950169.jpg?t=st=1727857967~exp=1727861567~hmac=fc80611a25de42fc4e1bbdfcfe9e12c79eebb76f4184e077f6da75816aef5a5b&w=996');">
+            <div class="hero-text text-center" style="color: aliceblue;">
+                <h1>Fresh Catch Daily</h1>
+                <a href="#card" class="btn btn-primary btn-lg">Explore Price List - Updated</a>
+            </div>
+        </section>
+    </div>
+    <!-- Price List Section -->
+    <div class="container-fluid">
+        <section>
+            <div class="row">
+                <div class="col">
+                    <div class="card p-4 shadow text-center">
+                        <img src="https://img.freepik.com/free-photo/fresh-sea-bream-fish_23-2148637817.jpg?t=st=1727935745~exp=1727939345~hmac=c3ffca6fbd6094e5331c968cd16a1a9c5e3547da4ea2a09ac3618ad51fcbeec8&w=740"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5> Mackerel (बांगडा)</h5>
+                            {% for n in mac_price_data %}
+                            <p><strong>Today's Rate:</strong> ₹{{n.wholesale}}/kg</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-4 shadow text-center">
+                        <img src="https://img.freepik.com/free-photo/top-view-fresh-mackerels-plate_23-2148295277.jpg?t=st=1727935951~exp=1727939551~hmac=bf70a3c1549b118b23a5d0aea646cff2258823a16f13a3e7c740e7364fde6a42&w=740"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5>King Fish (सुरमई)</h5>
+                            {% for n in king_price_data %}
+                            <p><strong>Today's Rate:</strong> ₹{{ n.wholesale }}/kg</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-4 shadow text-center">
+                        <img src="https://img.freepik.com/free-photo/top-view-shrimp-plate-with-ice-cubes_23-2148643588.jpg?t=st=1727936007~exp=1727939607~hmac=264334006505ae9d137e8e1cf4ef2489107571b8a70a6a1ff4d7b4b3c8eb2ab0&w=740"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5>Prawns (कोळंबी)</h5>
+                            {% for n in prawns_price_data %}
+                            <p><strong>Today's Rate:</strong> ₹{{ n.wholesale }}/kg</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="para">
+                    <div class="card p-4">
+                        <div class="card-body text-center rounded-pill" style="background-color: burlywood;">
+                            <h2 style="color: chocolate;">Your content here</h2>
+                            <p style="font-size: large;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo,
+                                perspiciatis, aliquid est
+                                quos beatae hic quam optio quas, sit nobis inventore officia illo. Consequuntur sapiente
+                                dolorum voluptates a asperiores neque.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <!-- Order Online Section -->
+        <!-- Order Online Section -->
+        <div class="container-fluid">
+            <section id="order-online" class="order-online-section py-5">
+                <div class="container">
+                    <h2 class="text-center mb-4">Place Your Order</h2>
+                    <div class="order-form-card p-5 shadow">
+                        <form action="{% url 'order' %}" method="POST">
+                            {% csrf_token %}
+
+                            <!-- Name Input -->
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Your Name:</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+
+                            <!-- Place Input -->
+                            <div class="mb-3">
+                                <label for="place" class="form-label">Place:</label>
+                                <input type="text" class="form-control" id="place" name="place" required>
+                            </div>
+
+                            <!-- Contact Number Input -->
+                            <div class="mb-3">
+                                <label for="contact" class="form-label">Contact Number:</label>
+                                <input type="tel" class="form-control" id="contact" name="contact" required>
+                            </div>
+
+                            <!-- Fish Selection -->
+                            <div class="mb-3">
+                                <label for="fish" class="form-label">Select Fish Type:</label>
+                                <select class="form-select" id="fish" name="fish" required>
+                                    <option value="" disabled selected>Select a Fish</option>
+                                    <option value="Mackerel">Mackerel</option>
+                                    <option value="King Fish">King Fish</option>
+                                    <option value="Prawns">Prawns</option>
+                                </select>
+                            </div>
+
+                            <!-- Quantity Input -->
+                            <div class="mb-3">
+                                <label for="quantity" class="form-label">Quantity (kg):</label>
+                                <input type="number" class="form-control" id="quantity" name="quantity" step="0.01"
+                                    min="0.1" required>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary">Place Order</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>© 2024 Fisherman Website. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

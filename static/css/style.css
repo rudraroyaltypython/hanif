@@ -1,0 +1,84 @@
+.hero {
+    background-image: url("");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.d-flex{
+    background-color: yellow;
+    color: brown;
+    font-size: large;
+}
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Hero Section */
+#hero {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.hero-text {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 50px;
+    border-radius: 10px;
+}
+
+#hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+#hero p {
+    font-size: 1.2rem;
+}
+
+/* Price List Section */
+.price-list-section {
+    background-color: #fff;
+}
+
+.price-card {
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.price-card:hover {
+    transform: scale(1.05);
+}
+
+.price-card h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.price-card p {
+    font-size: 1rem;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #333;
+}
+
+.nav-link {
+    color: #fff !important;
+}
+
+.nav-link:hover {
+    color: #ff9800 !important;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+}
